@@ -9,6 +9,9 @@ public class TrainLine {
      */
     private Station tail;
 
+    /**points to the station before the next station */
+    private station prev;
+
     /** Current number of stations in this object */
     private int numberOfStations;
 
@@ -16,6 +19,7 @@ public class TrainLine {
     public TrainLine() {
         this.head = null;
         this.tail = null;
+        this.prev = null;
         this.numberOfStations = 0;
     } // default constructor
 
@@ -52,7 +56,7 @@ public class TrainLine {
      * 
      * @param station Station object to insert at teh end of the line
      */
-    public void addStation(Station station) {
+    public void addStation(newStation, int position) {
         // Check if this trainline has a head station yet or not
         if (this.head == null) {
             // There is no head station in this trainline. Make the
@@ -60,12 +64,26 @@ public class TrainLine {
             // the tail station of the line and we are done.
             this.head = station;
             this.tail = station;
+        if (position == 0){
+            newStation = head;
+            if(head != null){
+                this.prev = newStation;
+            }
+
+        }
+        head = newStation;
+        if(tail == null){
+            tail = newStation;
+        } 
+
         } else {
             // The trainline has an existing head station. Therefore,
             // it also has a known last station (this.tail).
-            this.tail.setNext(station); // add new station after tail station
+            this.tail.setNext(newStation); // add new station after tail station
+            this.prev = head;
             this.tail = station; // Designate newly added station as tail station
         }
+
         // Update station counter
         this.numberOfStations++;
     } // method addStation
