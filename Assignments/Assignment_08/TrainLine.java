@@ -218,4 +218,59 @@ public class TrainLine {
         }
     } // method append
 
+    /**method list stations and returns a string with the names of the different stations */
+
+    public String listStations(){
+
+        if (head == null){
+            return "The line is empty";
+
+        StringBuilder stationList = new StringBuilder();
+        Station current = head;
+        
+        while(current != null){
+            stationList.append(current.Name);
+            if (current.Next != null){
+                stationList.append("\n");
+            }
+            current = current.Next;
+
+        }
+        return stationList.toString();
+    
+    }
+    /**method checks if two lines intersects each other and returns a boolean value */
+    public boolean intersects(Trainline other){
+        boolean Intersection = false;
+        set<String> thisStationSet = new Hash<>(station);
+        set<String> otherStationSet = new HashSet<>(other.station);
+
+        //chech if any intersection
+        if(otherStationset.contains(station)){
+            return true;
+        }else{
+            return Intersection;
+        }
+        
+
+    }
+    public int CompareTo(Trainline other){
+        if (other == null){
+            //if another trainline is null then this is considered greater
+            return 1;
+        }
+        //compare based on linenumber first
+        int result = this.LineNumber.compareTo(other.LineNumber);
+
+        if (result == 0){
+            //compare based on length if lineNumbers are equal
+            result = this.length.CompareTo(other.Length);
+        }
+        return result;
+
+    }
+    
+
+
+
 } // class TrainLine
