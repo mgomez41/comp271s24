@@ -3,17 +3,36 @@ public class Hash271 {
     /** Default size for foundation array */
     private static final int DEFAULT_SIZE = 4;
 
+    /**Default load factor threshold */
+    private static final double DEFAULT_LOAD_FACTOR_THRESHOLD = 0.75;
+
+
     /** Foundation array of node objects */
     Node[] foundation;
+
+    
+    /**Number of nodes in hashtable */
+    private int nodeCount;
+
+    
+    /**Load Factor threshold*/
+    private double loadFactorThreshold;
 
     /** Basic constructor */
     public Hash271(int size) {
         this.foundation = new Node[size];
+        this.nodeCount = 0;
+        this.loadFactorThreshold = loadFactorThreshold;
     } // basic constructor
+
+    /**Constructor with size and default load factor threshold */
+    public sizeHash271(int size){
+        this(size, DEFAULT_LOAD_FACTOR_THRESHOLD);
+    }//cosntructor with size
 
     /** Default constructor */
     public Hash271() {
-        this(DEFAULT_SIZE);
+        this(DEFAULT_SIZE, DEFAULT_LOAD_FACTOR_THRESHOLD);
     } // default constructor
 
     /**
@@ -46,6 +65,14 @@ public class Hash271 {
             }
             // Put the new node to the array position
             this.foundation[destination] = node;
+
+            //increament node count
+            this.node++;
+
+            //check and resize node if necessary
+            if(loadFactor() > this.loadFactorThreshold){
+                resize();
+            }
         }
     } // method put
 
@@ -62,6 +89,21 @@ public class Hash271 {
             this.put(node);
         }
     } // method put
+
+    /**
+     * Calculate the load factor
+     * @return double load factor
+     */
+    private double loadFactor(){
+        return(double) this.nodeCount / this.foundation.length;
+    }
+
+    /**Resize the foundation array when the load facytor exceeds the threshold */
+     private void rehash(){
+        Node[] oldFoundation = this.foundation;
+        this.foundation = new Node[oldFoundation.length * 2];
+        
+     }
 
     /** String representation of this object */
     public String toString() {
