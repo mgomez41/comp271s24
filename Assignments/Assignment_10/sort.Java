@@ -1,8 +1,7 @@
 
-
 public class MergeSort{
-    //merges two subarrays arr[]
-    //first subarray is {l....m}
+//merges two subarrays arr[]
+//first subarray is {l....m}
     //second subarray is {m+1...p}
     public void merge(int m[] int[] l, int[] r){
         / Find sizes of two subarrays to be merged
@@ -39,7 +38,7 @@ public class MergeSort{
 
     }
 
-    /
+    
     
 
 }
