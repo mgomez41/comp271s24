@@ -1,4 +1,4 @@
-public class Final {
+public class MergeFirst {
     public static void main(String[] args) {
         // Creates two arrays of size 4 and 6 and creates an empty array of size 10
         int[] arrayL = {23, 47, 81, 95};
@@ -38,5 +38,30 @@ public class Final {
             System.out.print(array[i] + " ");
         }
         System.out.println();
+    }
+
+    //method compares two arrays and add tyhem together sendin
+    //its sum to a new array that creates a new list of arrays 
+    //in decending order
+
+    public sortNext(int[] mergeM, int arrayL, int arrayR){
+        
+        if(arrayL == arrayR){
+            return;
+        }
+        else{
+            int mid = (arrayL + arrayR) / 2;
+
+            sortNext(mergeM, mid+1, arrayL);
+            
+            sortNext(mergeM, mid+1, arrayR);
+            
+            //merge both
+
+            merge(mergeM, arrayL, mid+1, arrayR );
+
+            
+        }
+
     }
 }
