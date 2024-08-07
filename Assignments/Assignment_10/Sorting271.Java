@@ -1,4 +1,4 @@
-public class MergeFirst {
+public class Sorting271 {
     public static void main(String[] args) {
         // Creates two arrays of size 4 and 6 and creates an empty array of size 10
         int[] arrayL = {23, 47, 81, 95};
@@ -63,7 +63,7 @@ public class MergeFirst {
         merge(array, left, mid, right);
     }
 
-    // Merge function used in merge sort
+    // Merge function used in merging
     public static void merge(int[] array, int left, int mid, int right) {
         int[] temp = new int[right - left + 1];
         int i = left, j = mid + 1, k = 0;

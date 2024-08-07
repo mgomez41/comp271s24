@@ -73,6 +73,33 @@ public class TrainLine_Solutions_8 {
     } // method addStation
 
     /**
+     * reverses the list of stations and returns a stringwith the names in reverse order.
+     * @return
+     */
+    public String reverseListStations() {
+        if (this.head == null) {
+            return EMPTY_LINE_MESSAGE;
+        }
+
+        Stack<String> stack = new Stack<>();
+        Station current = this.head;
+
+        // Traverse the list and push station names onto the stack
+        while (current != null) {
+            stack.push(current.getName());
+            current = current.getNext();
+        }
+
+        // Build the reversed string from the stack
+        StringBuilder reversedList = new StringBuilder();
+        while (!stack.isEmpty()) {
+            reversedList.append(stack.pop());
+            if (!stack.isEmpty()) {
+                reversedList.append(" -> "); // Add a separator between stations
+            }
+        }
+
+    /**
      * Determines if the linked list contains a loop. A loop forms when
      * the last station (this.tail) points to another station in the
      * train line instead of pointing to null. An empty line (this.head==null)
@@ -271,5 +298,20 @@ public class TrainLine_Solutions_8 {
     public int compareTo(TrainLine_Solutions_8 other) {
         return this.numberOfStations - other.getNumberOfStations();
     } // method compareTo
+
+
+
+    public static LinkedList<String> reverseLinkedList(LinkedList<String> llist)
+    {
+        LinkedList<String> revLinkedList = new LinkedList<String>();
+        for (int i = llist.size() - 1; i >= 0; i--) {
+ 
+            // Append the elements in reverse order
+            revLinkedList.add(llist.get(i));
+        }
+        // Return the reversed arraylist
+        return revLinkedList;
+    }
+}
 
 } // class TrainLine
